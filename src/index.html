@@ -8,7 +8,36 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <header class="header">
+      <div class="container header_content">
+        <input type="text" class="search" />
+        <button class="search_btn"></button>
+        <nav class="nav">
+          <a href="" class="nav_link"></a>
+          <a href="" class="nav_link"></a>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <ul class="trending_list"></ul>
+      <ul class="found_movies"></ul>
+    </div>
+    <!-- Modal -->
+    <div class="backdrop is-hidden">
+      <div class="modal">
+        <button type="button" class="close">Close</button>
+        <img
+          src="./images/header_bg-1x.jpg"
+          alt="modal"
+          class="image"
+          width="375"
+          height="478"
+        />
+        <div class="modal_wrapper">
+          <button class="modal-watched_btn">ADD TO WATCHED</button>
+          <button class="modal-queue_btn">ADD TO WATCHED</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

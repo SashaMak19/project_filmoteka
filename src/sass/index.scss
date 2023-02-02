@@ -1,2 +1,141 @@
-@import './common';
-@import './example';
+body {
+  background-color: gray;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.found_image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+  list-style: none;
+}
+
+.found_item {
+  min-width: 336px;
+  max-width: 395px;
+}
+
+.header {
+  height: 216px;
+  background-color: gray;
+  background-image: url('../images/header_bg-1x.jpg');
+  background-size: cover;
+}
+
+.container {
+  outline: solid 2px tomato;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+  @media screen and (min-width: 320px) {
+    max-width: 320px;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+  }
+}
+
+.search {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (min-width: 280px) {
+    max-width: 280px;
+  }
+  @media screen and (min-width: 336px) {
+    max-width: 336px;
+  }
+  @media screen and (min-width: 394px) {
+    max-width: 394px;
+  }
+}
+
+.search_btn {
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: 10px;
+  left: 61%;
+}
+
+/* / -------------------------------Modal----------------------// */
+
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+
+.backdrop.is-hidden {
+  display: none;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 806px;
+  height: 558px;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  outline: solid 1px tomato;
+}
+
+.close {
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.movie_title {
+  font-size: 30px;
+}
+// .image {
+//   object-fit: cover;
+// }
