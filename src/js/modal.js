@@ -3,7 +3,7 @@ import { fetchImformationMovie } from './fetches';
 const refs = {
   foundList: document.querySelector('.found_movies'),
   backdrop: document.querySelector('.backdrop'),
-  closeBtn: document.querySelector('.modal__close'),
+  closeBtn: document.querySelector('.btn-modal-close'),
   image: document.querySelector('.image'),
   modal: document.querySelector('.modal'),
   // modalWrapper: document.querySelector('.modal_wrapper'),
@@ -12,16 +12,29 @@ const refs = {
 
 // console.log(refs.image);
 
+//////////      Close modal     //////////
 refs.foundList.addEventListener('click', onClickItem);
 refs.closeBtn.addEventListener('click', onCloseModal);
-document.addEventListener('keydown', onCloseModayByEsc);
+refs.backdrop.addEventListener('click', onCloseModal);
+window.addEventListener('keydown', onCloseModalByEsc);
 
-function onCloseModayByEsc(e) {
+
+function onCloseModal() {
+  refs.backdrop.classList.add('is-hidden');
+  document.body.style.overflow = '';
+  refs.modal.innerHTML = '';
+
+  window.removeEventListener('keydown', onCloseModayByEsc);
+}
+
+function onCloseModalByEsc(e) {
   if (e.code === 'Escape') {
     onCloseModal();
-    console.log(e.code);
+    // console.log(e.code);
   }
 }
+
+
 
 // if (refs.backdrop.classList.contains('is-hidden')) {
 //   document.addEventListener('keydown', onCloseModayByEsc);
@@ -31,12 +44,16 @@ function onCloseModayByEsc(e) {
 //   document.removeEventListener('keydown', onCloseModayByEsc);
 // }
 
+
+
+
 async function getData(id) {
   const data = await fetchImformationMovie(id);
   console.log(data);
   renderCardOfMovie(data);
 }
 
+//////////    Render Modal    //////////
 function renderCardOfMovie(data) {
   const {
     title,
@@ -52,6 +69,7 @@ function renderCardOfMovie(data) {
   const genresOfMovie = genres.map(genres => genres.name);
   console.log(genresOfMovie.join(''));
   const markup = `
+    <button type="button" class="btn-modal-close">Close</button>
     <div class='modal-movie'>
     <img
           class='modal-movie__img'
@@ -116,14 +134,17 @@ function onClickItem(e) {
   if (e.target.nodeName === 'IMG') {
     getData(idOfImage);
     refs.backdrop.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
+
+    // refs.modal.style.display = "block";
     // refs.image.src = e.target.src;
     // console.log(e.target.alt);
     // refs.movieTitle.textContent = e.target.alt;
   }
 }
 
-function onCloseModal() {
-  refs.backdrop.classList.add('is-hidden');
-  refs.image.src = '';
-  refs.modal.innerHTML = '';
-}
+// function onCloseModal() {
+//   refs.backdrop.classList.add('is-hidden');
+//   // refs.image.src = '';
+//   refs.modal.innerHTML = '';
+// }
